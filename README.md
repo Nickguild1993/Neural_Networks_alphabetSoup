@@ -15,14 +15,17 @@ What variable(s) are considered to be the features for your model?
 What variable(s) are neither targets nor features, and should be removed from the input data?
 - I removed the following two columns because they should have zero effect on whether the investment is successful or not: **EIN** and **NAME**.  
 - Additionally, after merging the *one-hot encoded* features with the original dataframe, I removed the following **INCOME_AMT** bins: **INCOME_AMT_1M-5M, INCOME_AMT_5M-10M, INCOME_AMT_10M-50M, INCOME_AMT_50M+.  
-The reason being is that there were no companies that requested funding that reported income in those ranges, so their continued presence wasn't helpful and could of even been unhelpful in training my model.
-         ****IMAGE HERE OF REMOVING THOSE COLUMNS****
+The reason being is that there were no companies that requested funding that reported income in those ranges, so their continued presence wasn't helpful and could of even been unhelpful in training my model. In order to test if those **INCOME_AMOUNT** columns truly were without any non-zero values, I ran the following line of code to find the max value in that particular column, for example: ``app_df["INCOME_AMT_1M-5M"].max``  If the max value returned was 0, that meant that there are no companies who reported an income within that range (if they did, they would have a value of 1 instead).  Below is a screenshot of how the code looks in my jupyter notebook.
+
+![Alt_Text](https://github.com/Nickguild1993/Neural_Networks_M19/blob/main/M19_removal_income_columns.png)
+      
 
 ### Compiling, Training, and Evaluating the Model
 
 How many neurons, layers, and activation functions did you select for your neural network model, and why?
 
-    ****IMAGE OF EXCEL TABLE HERE****
+![Alt_img](https://github.com/Nickguild1993/Neural_Networks_M19/blob/main/M19_model_table_excel.png)
+
 - As viewable in the excel table above, I tried six different variations of neurons, layers, epochs and features to try to reach the target model performance of 75%.  Disappointingly, each iteration I tried failed to reach that threshold. 
 
 Were you able to achieve the target model performance?
@@ -36,5 +39,6 @@ What steps did you take to try and increase model performance?
 
 Summary: Summarize the overall results of the deep learning model. Include a recommendation for how a different model could solve this classification problem, and explain your recommendation.  
 
-        *****INSERT PNG OF OP 3 RESULTS HERE*****
+![Alt_Img](https://github.com/Nickguild1993/Neural_Networks_M19/blob/main/M19_Optimization3_best_result.png)
+
 - Above are the results from evaluating the test data during my third and most successful optimization.  It's right at 73% accuracy, I just couldn't get those last two percentage points to reach the goal.
