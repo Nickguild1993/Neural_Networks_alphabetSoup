@@ -1,18 +1,23 @@
-# Neural_Networks_M19
+# Exploring Neural Networks, Module 19.
 
 
-# Overview of the analysis
+## Overview of the analysis
 
 The purpose of this analysis was to create a model that could be trained on prior projects that AlphabetSoup has funded and better understand what parameters/features of a company hold predictive value for determining if going forward with a monetary investment in company X is prudent. If the model we build is successful in predicting whether a company is a good investment or not, AlphabetSoup will be able to allocate it's finanical resources much more efficiently leading begetting not only more positive outcomes, but also *reducing* negative outcomes that end up being cash burns.  
 
-# Results: Using bulleted lists and images to support your answers, address the following questions.
+## Results: 
 
 ### Data Preprocessing
 What variable(s) are considered the target(s) for your model?
+
 - the target variable was **IS_SUCCESSFUL** as that determines in a binary manner whether the money was a wise investment or not. 
+
 What variable(s) are considered to be the features for your model?
-- The features that I thought would be predictive are the following: - **APPLICATION_TYPE, AFFILIATION, INCOME_AMOUNT, SPECIAL_CONSIDERATIONS, ASK_AMOUNT, STATUS, USE_CASE, CLASSIFICATION and ORGANIZATION. **
+
+- The features that I thought would be predictive are the following: - **APPLICATION_TYPE, AFFILIATION, INCOME_AMOUNT, SPECIAL_CONSIDERATIONS, ASK_AMOUNT, STATUS, USE_CASE, CLASSIFICATION and ORGANIZATION** 
+
 What variable(s) are neither targets nor features, and should be removed from the input data?
+
 - I removed the following two columns because they should have zero effect on whether the investment is successful or not: **EIN** and **NAME**.  
 - Additionally, after merging the *one-hot encoded* features with the original dataframe, I removed the following **INCOME_AMT** bins: **INCOME_AMT_1M-5M, INCOME_AMT_5M-10M, INCOME_AMT_10M-50M, INCOME_AMT_50M+.  
 The reason being is that there were no companies that requested funding that reported income in those ranges, so their continued presence wasn't helpful and could of even been unhelpful in training my model. In order to test if those **INCOME_AMOUNT** columns truly were without any non-zero values, I ran the following line of code to find the max value in that particular column, for example: ``app_df["INCOME_AMT_1M-5M"].max``  If the max value returned was 0, that meant that there are no companies who reported an income within that range (if they did, they would have a value of 1 instead).  Below is a screenshot of how the code looks in my jupyter notebook.
