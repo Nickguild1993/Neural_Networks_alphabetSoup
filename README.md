@@ -1,4 +1,4 @@
-# Exploring Neural Networks, Module 19.
+# Exploring Neural Networks
 
 
 ## Overview of the analysis
